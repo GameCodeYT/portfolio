@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block title %}Experiencia | Portfolio{% endblock %}
+{% block content %}
+<section style="max-width: 650px;">
+    <h1>Experiencia & Trayectoria</h1>
+    <p style="margin-bottom: 2rem;">Un resumen de mi formación, certificaciones y trayectoria profesional.</p>
+
+    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+        <div style="padding-bottom: 1.5rem; border-bottom: 1px solid var(--border-color);">
+            <h3 style="font-size: 1.05rem; font-weight: 600;">Desarrollador Full-Stack</h3>
+            <span style="font-size: 0.8rem; color: var(--accent);">2024 - Presente</span>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem;">
+                Construcción de aplicaciones web ligeras, APIs con Python/Flask y diseño de interfaces optimizadas.
+            </p>
+        </div>
+
+        <div style="padding-bottom: 1.5rem; border-bottom: 1px solid var(--border-color);">
+            <h3 style="font-size: 1.05rem; font-weight: 600;">Proyectos Autónomos & Freelance</h3>
+            <span style="font-size: 0.8rem; color: var(--accent);">2023 - Presente</span>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem;">
+                Diseño de herramientas a medida, automatizaciones y arquitectura limpia para clientes y proyectos personales.
+            </p>
+        </div>
+    </div>
+</section>
+{% endblock %}

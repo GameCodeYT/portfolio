@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Portfolio | Tiziano{% endblock %}</title>
+    
+    <meta name="description" content="Portfolio profesional de Tiziano - Desarrollador Full-Stack.">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
+</head>
+<body class="protected-content">
+    <header>
+        <nav>
+            <!-- Distintivo técnico en lugar del nombre plano -->
+            <a href="{{ url_for('index') }}" class="nav-brand">~/tiziano</a>
+            
+            <ul class="nav-links">
+                <li><a href="{{ url_for('index') }}" class="{% if active_page == 'index' %}active{% endif %}">Inicio</a></li>
+                <li><a href="{{ url_for('proyectos') }}" class="{% if active_page == 'proyectos' %}active{% endif %}">Proyectos</a></li>
+                <li><a href="{{ url_for('experiencia') }}" class="{% if active_page == 'experiencia' %}active{% endif %}">Experiencia</a></li>
+                <li><a href="{{ url_for('videos') }}" class="{% if active_page == 'videos' %}active{% endif %}">Videos</a></li>
+                <li><a href="{{ url_for('contacto') }}" class="{% if active_page == 'contacto' %}active{% endif %}">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="fade-in">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <p>&copy; 2026 Tiziano. Código simple y funcional.</p>
+        <!-- Enlace visible pero protegido por las 3 credenciales -->
+        <a href="{{ url_for('admin_panel') }}" style="color: var(--text-secondary); text-decoration: none; font-size: 0.75rem; opacity: 0.4;">
+            🔒 Admin
+        </a>
+    </div>
+</footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

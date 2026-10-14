@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiziano | Portfolio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
+</head>
+<body>
+    <main>
+        <div style="margin-bottom: 1.5rem;">
+            <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-secondary); letter-spacing: 0.05em;">
+                [01/20] — INICIO
+            </span>
+        </div>
+        
+        <h1>Hola, soy Tiziano.</h1>
+        
+        <p style="font-size: 1.1rem; color: var(--text-primary); max-width: 580px; margin-bottom: 1rem;">
+            Desarrollador en constante formación, enfocado en construir software web limpio, eficiente y bien estructurado.
+        </p>
+        
+        <p style="max-width: 520px; margin-bottom: 2rem;">
+            Este espacio registra mi progreso, proyectos prácticos y la evolución de mi aprendizaje técnico paso a paso.
+        </p>
+        
+        <div class="btn-group">
+            <a href="{{ url_for('proyectos') }}" class="btn">Comenzar</a>
+            <a href="{{ url_for('contacto') }}" class="btn-secondary btn">Contacto</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Tiziano. Código simple y funcional.</p>
+    </footer>
+</body>
+</html>

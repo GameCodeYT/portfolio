@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block title %}Videos | Portfolio{% endblock %}
+{% block content %}
+<section>
+    <h1>Videos</h1>
+    <p>Conferencias, ponencias y píldoras técnicas.</p>
+
+    <div style="margin-top: 2rem; display: flex; flex-direction: column; gap: 2rem;">
+        <div>
+            <div class="video-container">
+                <!-- Reemplazar el ID del embed por tu video de YouTube -->
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Video 1" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <h3 style="font-size: 1rem; color: var(--text-primary); margin-bottom: 0.2rem;">Arquitectura de Software y Patrones de Diseño</h3>
+            <p style="font-size: 0.85rem; margin: 0;">Análisis detallado sobre diseño modular.</p>
+        </div>
+        <div>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Video 2" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <h3 style="font-size: 1rem; color: var(--text-primary); margin-bottom: 0.2rem;">Optimización de Rendimiento Web en Producción</h3>
+            <p style="font-size: 0.85rem; margin: 0;">Claves para minimizar latencia y consumo de recursos.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}
