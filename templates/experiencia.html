@@ -1,26 +1,182 @@
-{% extends "layout.html" %}
-{% block title %}Experiencia | Portfolio{% endblock %}
-{% block content %}
-<section style="max-width: 650px;">
-    <h1>Experiencia & Trayectoria</h1>
-    <p style="margin-bottom: 2rem;">Un resumen de mi formación, certificaciones y trayectoria profesional.</p>
-
-    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-        <div style="padding-bottom: 1.5rem; border-bottom: 1px solid var(--border-color);">
-            <h3 style="font-size: 1.05rem; font-weight: 600;">Desarrollador Full-Stack</h3>
-            <span style="font-size: 0.8rem; color: var(--accent);">2024 - Presente</span>
-            <p style="margin-top: 0.5rem; font-size: 0.9rem;">
-                Construcción de aplicaciones web ligeras, APIs con Python/Flask y diseño de interfaces optimizadas.
-            </p>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiencia & Trayectoria | Tiziano</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
+    <style>
+        /* Estilos minimalistas para los modales */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(4px);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 1rem;
+        }
+        .modal-content {
+            background: var(--bg-color, #0a0a0a);
+            border: 1px solid #222;
+            padding: 2rem;
+            max-width: 550px;
+            width: 100%;
+            border-radius: 8px;
+            position: relative;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+        }
+        .close-btn {
+            position: absolute;
+            top: 1rem; right: 1.25rem;
+            background: none; border: none;
+            color: var(--text-secondary);
+            font-size: 1.25rem;
+            cursor: pointer;
+        }
+        .close-btn:hover { color: var(--text-primary); }
+    </style>
+</head>
+<body style="background-color: var(--bg-color);">
+    <main style="max-width: 700px; margin: 0 auto; padding: 3rem 1.5rem;">
+        
+        <!-- Navegación superior -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem;">
+            <span style="font-family: var(--font-mono); font-size: 0.9rem; color: var(--text-primary);">~/tiziano</span>
+            <nav style="display: flex; gap: 1.25rem; font-size: 0.85rem;">
+                <a href="{{ url_for('index') }}" style="color: var(--text-secondary); text-decoration: none;">Inicio</a>
+                <a href="{{ url_for('proyectos') }}" style="color: var(--text-secondary); text-decoration: none;">Proyectos</a>
+                <a href="{{ url_for('experiencia') }}" style="color: var(--text-primary); font-weight: 600; text-decoration: none;">Experiencia</a>
+                <a href="{{ url_for('contacto') }}" style="color: var(--text-secondary); text-decoration: none;">Contacto</a>
+            </nav>
         </div>
 
-        <div style="padding-bottom: 1.5rem; border-bottom: 1px solid var(--border-color);">
-            <h3 style="font-size: 1.05rem; font-weight: 600;">Proyectos Autónomos & Freelance</h3>
-            <span style="font-size: 0.8rem; color: var(--accent);">2023 - Presente</span>
-            <p style="margin-top: 0.5rem; font-size: 0.9rem;">
-                Diseño de herramientas a medida, automatizaciones y arquitectura limpia para clientes y proyectos personales.
-            </p>
+        <h1 style="font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-primary);">Experiencia & Trayectoria</h1>
+        <p style="color: var(--text-secondary); margin-bottom: 2.5rem; font-size: 0.95rem;">
+            Un recorrido por mi formación técnica, competencias prácticas y evolución profesional.
+        </p>
+
+        <!-- Contenedor de Trayectorias -->
+        <div style="display: flex; flex-direction: column; gap: 1.75rem;">
+            
+            <!-- 1. Informática -->
+            <div style="border-left: 2px solid var(--accent-color, #4f46e5); padding-left: 1.25rem;">
+                <h3 style="font-size: 1.1rem; font-weight: 600; color: var(--text-primary);">Técnico en Informática (En Curso)</h3>
+                <span style="font-size: 0.8rem; color: var(--text-secondary);">1.er Año Completado &bull; Cursando 2.º Año (Desarrollo Web) | Alicante</span>
+                <p style="font-size: 0.85rem; margin-top: 0.5rem; color: var(--text-primary); line-height: 1.5;">
+                    • <strong>2.º Año (Cursando actualmente):</strong> Desarrollo web, código, Python/Flask y proyectos prácticos.<br>
+                    • <strong>1.er Año (Completado):</strong> Fundamentos de sistemas, redes, hardware y 150h de prácticas técnicas.
+                </p>
+                <button onclick="openModal('modal-informatica')" class="btn btn-secondary" style="margin-top: 0.75rem; font-size: 0.75rem; padding: 0.3rem 0.7rem; cursor: pointer;">
+                    Ver detalles y tareas →
+                </button>
+            </div>
+
+            <!-- 2. Instalaciones y Automatismos -->
+            <div style="border-left: 2px solid #333; padding-left: 1.25rem;">
+                <h3 style="font-size: 1rem; font-weight: 500; color: var(--text-primary);">Formación en Instalaciones y Automatismos</h3>
+                <span style="font-size: 0.8rem; color: var(--text-secondary);">Climatización, Soldadura y Circuitos de Control</span>
+                <p style="font-size: 0.85rem; margin-top: 0.4rem; color: var(--text-secondary); line-height: 1.5;">
+                    Aprendizaje práctico en taller, conformado de materiales y técnicas avanzadas de soldadura bajo exigencia técnica.
+                </p>
+                <button onclick="openModal('modal-instalaciones')" class="btn btn-secondary" style="margin-top: 0.75rem; font-size: 0.75rem; padding: 0.3rem 0.7rem; cursor: pointer;">
+                    Ver detalles y taller →
+                </button>
+            </div>
+
+            <!-- 3. Obra Civil -->
+            <div style="border-left: 2px solid #333; padding-left: 1.25rem;">
+                <h3 style="font-size: 1rem; font-weight: 500; color: var(--text-primary);">FP Básica en Obra Civil</h3>
+                <span style="font-size: 0.8rem; color: var(--text-secondary);">2 Años &bull; 240h FCT (Prácticas en Empresa)</span>
+                <p style="font-size: 0.85rem; margin-top: 0.4rem; color: var(--text-secondary); line-height: 1.5;">
+                    Desarrollo de disciplina técnica, manejo de herramientas de corte/pulido, logística y atención directa al público.
+                </p>
+                <button onclick="openModal('modal-obracivil')" class="btn btn-secondary" style="margin-top: 0.75rem; font-size: 0.75rem; padding: 0.3rem 0.7rem; cursor: pointer;">
+                    Ver detalles de FCT →
+                </button>
+            </div>
+
+            <!-- 4. ESO -->
+            <div style="border-left: 2px solid #333; padding-left: 1.25rem;">
+                <h3 style="font-size: 1rem; font-weight: 500; color: var(--text-primary);">Educación Secundaria Obligatoria (ESO)</h3>
+                <span style="font-size: 0.8rem; color: var(--text-secondary);">Graduado | Alicante</span>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- VENTANAS MODALES (POP-UPS) -->
+
+    <!-- Modal Informática -->
+    <div id="modal-informatica" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('modal-informatica')">&times;</button>
+            <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--text-primary);">Técnico en Informática</h3>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem;">Evolución académica y experiencia práctica:</p>
+            <ul style="font-size: 0.85rem; color: var(--text-primary); padding-left: 1.2rem; display: flex; flex-direction: column; gap: 0.6rem; line-height: 1.4;">
+                <li><strong>2.º Año (Actual):</strong> Enfoque en desarrollo web, maquetación, programación backend con Python/Flask, bases de datos y estructura de proyectos.</li>
+                <li><strong>1.er Año (Completado - Prácticas de 150h):</strong>
+                    <ul style="margin-top: 0.3rem; padding-left: 1rem; color: var(--text-secondary); display: flex; flex-direction: column; gap: 0.3rem;">
+                        <li>• Mantenimiento de ordenadores, diagnóstico y solución de incidencias de red y cableado Ethernet en aulas.</li>
+                        <li>• Verificación de conectividad local mediante comandos `ping` desde la consola (`CMD`).</li>
+                        <li>• Mantenimiento de infraestructura, organización de hardware y manejo del rack de comunicaciones.</li>
+                        <li>• Soporte técnico en eventos (configuración de audio y Wi-Fi) y gestión de inscripciones en plataformas como AdmiNova.</li>
+                    </ul>
+                </li>
+            </ul>
         </div>
     </div>
-</section>
-{% endblock %}
+
+    <!-- Modal Instalaciones -->
+    <div id="modal-instalaciones" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('modal-instalaciones')">&times;</button>
+            <h3 style="font-size: 1.2rem; margin-bottom: 1rem; color: var(--text-primary);">Instalaciones y Automatismos - Taller y Soldadura</h3>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem;">Trabajo práctico guiado por instructores técnicos:</p>
+            <ul style="font-size: 0.85rem; color: var(--text-primary); padding-left: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem; line-height: 1.4;">
+                <li><strong>Conformado de materiales:</strong> Corte y moldeo de placas según especificaciones técnicas precisas.</li>
+                <li><strong>Pruebas y control de calidad:</strong> Evaluación física de resistencia (ensayos de golpes) realizados por el profesorado para homologar las piezas de trabajo.</li>
+                <li><strong>Técnicas avanzadas de soldadura:</strong> Práctica y ejecución en 5 categorías clave: soldadura por puntos en placa, cordones en línea recta, patrones en zigzag, espirales, unión entre dos placas y empalme de tubos en forma de L.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Modal Obra Civil -->
+    <div id="modal-obracivil" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('modal-obracivil')">&times;</button>
+            <h3 style="font-size: 1.2rem; margin-bottom: 1rem; color: var(--text-primary);">FP Básica en Obra Civil - Prácticas (FCT 240h)</h3>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem;">Experiencia en entorno laboral real (1 mes intensivo + taller):</p>
+            <ul style="font-size: 0.85rem; color: var(--text-primary); padding-left: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem; line-height: 1.4;">
+                <li><strong>Manejo de herramientas:</strong> Operación segura de equipos de corte y pulido para acabados de materiales.</li>
+                <li><strong>Logística y gestión:</strong> Transporte de materiales, recepción y colocación coordinada de pedidos junto a superiores.</li>
+                <li><strong>Atención al público y comunicación:</strong> Recepción y orientación inicial a clientes, derivación eficiente de consultas complejas a compañeros para garantizar una respuesta rápida y profesional.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Script para abrir y cerrar modales -->
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+        }
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+        // Cerrar al hacer clic fuera de la caja
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+            }
+        }
+    </script>
+
+    <footer style="margin-top: 4rem; display: flex; justify-content: space-between; align-items: center; max-width: 700px; margin-left: auto; margin-right: auto; padding: 0 1.5rem;">
+        <p style="font-size: 0.8rem; color: var(--text-secondary);">&copy; 2026 Tiziano. Código simple y funcional.</p>
+        <a href="{{ url_for('admin_panel') }}" style="font-size: 0.8rem; color: var(--text-secondary); text-decoration: none;">🔒 Admin</a>
+    </footer>
+</body>
+</html>

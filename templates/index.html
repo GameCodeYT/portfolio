@@ -7,75 +7,28 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
 </head>
-<body style="background-color: var(--bg-color);">
+<body>
     <main>
-        <!-- Encabezado / Presentación -->
         <div style="margin-bottom: 1.5rem;">
             <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-secondary); letter-spacing: 0.05em;">
-                | INICIO
+                [16/20] — INICIO
             </span>
         </div>
-
+        
         <h1>Hola, soy Tiziano.</h1>
-
+        
         <p style="font-size: 1.1rem; color: var(--text-primary); max-width: 580px; margin-bottom: 1rem;">
-            Desarrollador en formación, enfocado en construir software web limpio, eficiente y bien estructurado.
+            Desarrollador en constante formación, enfocado en construir software web limpio, eficiente y bien estructurado.
         </p>
-
+        
         <p style="max-width: 520px; margin-bottom: 2rem;">
             Este espacio registra mi progreso, proyectos prácticos y la evolución de mi aprendizaje técnico paso a paso.
         </p>
-
-        <div class="btn-group" style="margin-bottom: 3rem;">
-            <a href="{{ url_for('proyectos') }}" class="btn">Proyectos</a>
+        
+        <div class="btn-group">
+            <a href="{{ url_for('proyectos') }}" class="btn">Comenzar</a>
             <a href="{{ url_for('contacto') }}" class="btn-secondary btn">Contacto</a>
         </div>
-
-        <!-- Sección: Trayectoria y Formación -->
-        <section style="margin-top: 3rem; margin-bottom: 3rem;">
-            <h2 style="font-size: 1.25rem; margin-bottom: 1.5rem; font-weight: 600; color: var(--text-primary);">
-                Trayectoria y Formación
-            </h2>
-            
-            <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-                
-                <!-- Informática (Actual) -->
-                <div style="border-left: 2px solid var(--accent-color, #4f46e5); padding-left: 1rem;">
-                    <h3 style="font-size: 1rem; font-weight: 600; color: var(--text-primary);">Técnico en Informática (En Curso)</h3>
-                    <span style="font-size: 0.8rem; color: var(--text-secondary);">2º Año: Desarrollo Web y Código | Alicante</span>
-                    <p style="font-size: 0.85rem; margin-top: 0.5rem; color: var(--text-primary); line-height: 1.5;">
-                        • <strong>2º Año (Actual):</strong> Enfoque en desarrollo web, creación de aplicaciones con Flask, lógica de programación y proyectos prácticos.<br>
-                        • <strong>1er Año (Completado):</strong> Fundamentos de sistemas, arquitectura de computadores, redes y bases de datos.
-                    </p>
-                </div>
-
-                <!-- Climatización / Automatismos -->
-                <div style="border-left: 2px solid #444; padding-left: 1rem;">
-                    <h3 style="font-size: 0.95rem; font-weight: 500; color: var(--text-primary);">Formación en Instalaciones y Automatismos</h3>
-                    <span style="font-size: 0.8rem; color: var(--text-secondary);">Climatización y Aire Acondicionado</span>
-                    <p style="font-size: 0.85rem; margin-top: 0.25rem; color: var(--text-secondary);">
-                        Introducción a la automatización, sistemas eléctricos y circuitos de control.
-                    </p>
-                </div>
-
-                <!-- Obra Civil -->
-                <div style="border-left: 2px solid #444; padding-left: 1rem;">
-                    <h3 style="font-size: 0.95rem; font-weight: 500; color: var(--text-primary);">FP Básica en Obra Civil</h3>
-                    <span style="font-size: 0.8rem; color: var(--text-secondary);">2 Años Completados</span>
-                    <p style="font-size: 0.85rem; margin-top: 0.25rem; color: var(--text-secondary);">
-                        Desarrollo de disciplina técnica, trabajo en equipo e interpretación de esquemas y planos.
-                    </p>
-                </div>
-
-                <!-- ESO -->
-                <div style="border-left: 2px solid #444; padding-left: 1rem;">
-                    <h3 style="font-size: 0.95rem; font-weight: 500; color: var(--text-primary);">Educación Secundaria Obligatoria (ESO)</h3>
-                    <span style="font-size: 0.8rem; color: var(--text-secondary);">Graduado | Alicante</span>
-                </div>
-
-            </div>
-        </section>
-
     </main>
 
     <footer>
